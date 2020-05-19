@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+<h1 id="btc_price" style="font-size:300%;text-align:center"></h1>
+<script>
+	const pricesWs = new WebSocket('wss://ws.coincap.io/prices?assets=bitcoin')
+
+	pricesWs.onmessage = function (msg) {
+		price = JSON.parse(msg.data).bitcoin
+		old_price =  document.getElementById("btc_price").innerHTML
+		document.getElementById('btc_price').innerHTML = price;
+		if (price > old_price){
+		document.getElementById("btc_price").style.color = "green";
+		}
+		else {
+		document.getElementById("btc_price").style.color = "red";
+		}
+	}
+</script>
+</body>
