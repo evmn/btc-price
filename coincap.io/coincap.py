@@ -23,5 +23,6 @@ for i in range(0, len(response)):
 		ts = datetime.datetime.fromtimestamp(time)
 		print(ts.strftime('%Y-%m-%d %H:%M:%S'), price)
 		db.execute("insert into btc(timestamp, price) values(?,?)",(time,price))
-		conn.commit()
+		
+conn.commit()
 conn.close()
